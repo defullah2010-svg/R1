@@ -11,25 +11,107 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 
 <style>
-body { margin:0; padding:0; font-family:'HelveticaNeueW23', Arial, sans-serif; background:#f5f5f5; }
-@font-face { font-family:'HelveticaNeueW23'; src:url('fonts/HelveticaNeueW23-Regular.ttf') format('truetype'); }
-header { background:#15445A; color:white; text-align:center; padding:10px; }
-header h1, header h2 { margin:3px 0; font-size:16px; }
-.tabs { display:flex; justify-content:center; background:#37648c; flex-wrap:wrap; }
-.tab-button { flex:1; padding:10px; cursor:pointer; text-align:center; background:#37648c; color:white; border:none; font-size:14px; font-weight:bold; }
+body { 
+  margin:0; 
+  padding:0; 
+  font-family:'HelveticaNeueW23', Arial, sans-serif; 
+  background:#f5f5f5; 
+}
+@font-face { 
+  font-family:'HelveticaNeueW23'; 
+  src:url('fonts/HelveticaNeueW23-Regular.ttf') format('truetype'); 
+}
+
+header { 
+  background:#15445A; 
+  color:white; 
+  text-align:center; 
+  padding:10px; 
+}
+header h1, header h2 { 
+  margin:3px 0; 
+  font-size:16px; 
+  font-family:'HelveticaNeueW23', Arial, sans-serif; 
+}
+
+/* تبويبات */
+.tabs { 
+  display:flex; 
+  justify-content:center; 
+  background:#37648c; 
+  flex-wrap:wrap; 
+}
+.tab-button { 
+  flex:1; 
+  padding:10px; 
+  cursor:pointer; 
+  text-align:center; 
+  background:#37648c; 
+  color:white; 
+  border:none; 
+  font-size:14px; 
+  font-weight:bold; 
+  font-family:'HelveticaNeueW23', Arial, sans-serif; 
+}
 .tab-button.active { background:#0c8380; }
+
 .tab-content { display:none; padding:10px; background:none; margin:5px; }
 .tab-content.active { display:block; }
-label { display:block; margin:5px 0 2px; font-weight:bold; font-size:12px; text-align:center; background:transparent; }
-input, textarea { width:100%; padding:4px; border:1px solid #c2c1c2; border-radius:4px; margin-bottom:5px; box-sizing:border-box; font-size:12px; text-align:center; }
+
+label { 
+  display:block; 
+  margin:5px 0 2px; 
+  font-weight:bold; 
+  font-size:12px; 
+  text-align:center; 
+  background:transparent; 
+  font-family:'HelveticaNeueW23', Arial, sans-serif; 
+}
+h2 {
+  font-family:'HelveticaNeueW23', Arial, sans-serif;
+}
+input, textarea { 
+  width:100%; 
+  padding:4px; 
+  border:1px solid #c2c1c2; 
+  border-radius:4px; 
+  margin-bottom:5px; 
+  box-sizing:border-box; 
+  font-size:12px; 
+  text-align:center; 
+  font-family:'HelveticaNeueW23', Arial, sans-serif; 
+}
 textarea { min-height:40px; }
-button { border:none; padding:8px 10px; margin:5px 0; cursor:pointer; border-radius:6px; width:100%; font-size:14px; font-weight:bold; }
+
+/* أزرار الطباعة والحذف */
+button { 
+  border:none; 
+  padding:8px 10px; 
+  margin:5px 0; 
+  cursor:pointer; 
+  border-radius:6px; 
+  width:100%; 
+  font-size:14px; 
+  font-weight:bold; 
+  font-family:'HelveticaNeueW23', Arial, sans-serif; 
+}
 button.printBtn.active { background:#0c8380; }
 button.printBtn { background:#0c8380; color:white; transition: background 0.3s; }
 button.deleteBtn { background:red; color:white; }
-footer { text-align:center; padding:10px; color:black; font-weight:bold; font-size:12px; }
+
+footer { 
+  text-align:center; 
+  padding:10px; 
+  color:black; 
+  font-weight:bold; 
+  font-size:12px; 
+  font-family:'HelveticaNeueW23', Arial, sans-serif; 
+}
+
 @media print {
-  body, input, textarea, label, button, header, footer, .tab-content { font-family:'HelveticaNeueW23', Arial, sans-serif; }
+  body, input, textarea, label, button, header, footer, .tab-content { 
+    font-family:'HelveticaNeueW23', Arial, sans-serif; 
+  }
   body { background:none !important; }
   .tab-content { background:transparent !important; }
   input, textarea, label { background: transparent !important; color:black; border-color:#c2c1c2; }
@@ -204,12 +286,12 @@ footer { text-align:center; padding:10px; color:black; font-weight:bold; font-si
 <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:5px;">
 <input type="text"><input type="text"><input type="text"></div>
 
-<label>الطلاب الضعفاء</label>
+<label>الطلاب المخفقون</label>
 <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:5px;">
 <input type="text"><input type="text"><input type="text">
 <input type="text"><input type="text"><input type="text"></div>
 
-<label>الخطة العلاجية للطلاب الضعفاء</label>
+<label>الخطة العلاجية للطلاب المخفقين</label>
 <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:5px;">
 <input type="text"><input type="text"><input type="text"></div>
 
@@ -229,7 +311,6 @@ footer { text-align:center; padding:10px; color:black; font-weight:bold; font-si
 </div>
 
 <script>
-// نفس السكربت كما هو دون تعديل
 let uploadedImages = {};
 
 function openTab(tabId,event){
@@ -305,44 +386,47 @@ function renderPreview(tabId){
     img.src=src;
     img.style.width="70px"; img.style.height="70px"; img.style.objectFit="cover"; img.style.border="1px solid #ccc"; img.style.borderRadius="4px";
     const btn=document.createElement("button");
-    btn.textContent="❌"; btn.style.position="absolute"; btn.style.top="-5px"; btn.style.right="-5px"; btn.style.background="red"; btn.style.color="white"; btn.style.border="none"; btn.style.borderRadius="50%"; btn.style.cursor="pointer"; btn.style.fontSize="10px";
-    btn.onclick=()=>{ uploadedImages[tabId].splice(index,1); updateCounter(tabId); renderPreview(tabId); saveForm(tabId); };
-    container.appendChild(img); container.appendChild(btn); preview.appendChild(container);
+    btn.textContent="❌"; btn.style.position="absolute"; btn.style.top="0"; btn.style.right="0"; btn.style.background="rgba(0,0,0,0.5)"; btn.style.color="white"; btn.style.border="none"; btn.style.cursor="pointer"; btn.style.borderRadius="3px";
+    btn.onclick=()=>{ uploadedImages[tabId].splice(index,1); updateCounter(tabId); renderPreview(tabId); };
+    container.appendChild(img); container.appendChild(btn);
+    preview.appendChild(container);
   });
 }
 
-flatpickr("#dailyDate",{ locale:'ar', dateFormat:"d-m-Y", altInput:true, altFormat:"d-m-Y" });
-flatpickr("#weeklyDate",{ locale:'ar', dateFormat:"d-m-Y", altInput:true, altFormat:"d-m-Y" });
-flatpickr("#monthlyDate",{ locale:'ar', dateFormat:"d-m-Y", altInput:true, altFormat:"d-m-Y" });
+function printPDF(tabId,button){
+  const element=document.getElementById(tabId);
+  const cloned=element.cloneNode(true);
 
-function printPDF(tabId,btn){
-  updatePrintButtonColor(tabId);
-  const content=document.getElementById(tabId).cloneNode(true);
-  content.querySelectorAll('button,input[type="file"],#'+tabId+'-counter,#'+tabId+'-preview').forEach(el=>el.remove());
-  content.querySelectorAll('input[type="text"]').forEach(input=>{ if(input.placeholder==="DD-MM-YYYY") input.placeholder=''; });
+  const previews=cloned.querySelectorAll('[id$="-preview"]');
+  previews.forEach(preview=>{
+    preview.innerHTML="";
+    (uploadedImages[tabId]||[]).forEach(src=>{
+      const img=document.createElement("img");
+      img.src=src; img.style.width="100px"; img.style.height="100px"; img.style.objectFit="cover"; img.style.margin="5px"; img.style.border="1px solid #ccc";
+      preview.appendChild(img);
+    });
+  });
 
-  const wrapper=document.createElement('div'); wrapper.style.position='relative'; wrapper.style.width='210mm'; wrapper.style.height='296.5mm'; wrapper.style.padding='13mm 10mm 20mm 10mm'; wrapper.style.boxSizing='border-box'; wrapper.style.overflow='hidden'; wrapper.style.backgroundImage='url("images/background.png")'; wrapper.style.backgroundSize='cover'; wrapper.style.backgroundRepeat='no-repeat'; wrapper.style.backgroundPosition='center'; wrapper.appendChild(content);
-
-  const tabImages=uploadedImages[tabId]||[];
-  if(tabImages.length>0){
-    const imagesWrapper=document.createElement('div'); imagesWrapper.style.display='flex'; imagesWrapper.style.justifyContent='center'; imagesWrapper.style.marginTop='5px'; imagesWrapper.style.gap='5px';
-    tabImages.forEach(src=>{ const img=document.createElement('img'); img.src=src; img.style.width='160px'; img.style.height='160px'; img.style.objectFit='cover'; imagesWrapper.appendChild(img); });
-    wrapper.appendChild(imagesWrapper);
-  }
-
-  html2pdf().set({ margin:0, filename: tabId+'-report.pdf', image:{type:'jpeg',quality:0.95}, html2canvas:{scale:3, useCORS:true, backgroundColor:null, scrollY:0}, jsPDF:{unit:'mm', format:'a4', orientation:'portrait'}}).from(wrapper).save();
+  const opt={ margin:0.5, filename:tabId+'-report.pdf', image:{ type:'jpeg', quality:0.98 }, html2canvas:{ scale:2 }, jsPDF:{ unit:'in', format:'a4', orientation:'portrait' } };
+  html2pdf().set(opt).from(cloned).save();
+  button.classList.add("active");
 }
 
 function updatePrintButtonColor(tabId){
-  document.querySelectorAll('.printBtn').forEach(btn=>btn.classList.remove('active'));
-  const btn=document.getElementById(tabId).querySelector('.printBtn'); if(btn) btn.classList.add('active');
+  document.querySelectorAll(".printBtn").forEach(btn=>btn.classList.remove("active"));
+  const activeBtn=document.querySelector("#"+tabId+" .printBtn");
+  if(activeBtn) activeBtn.classList.add("active");
 }
 
-['daily','weekly','monthly'].forEach(tabId=>{
-  loadForm(tabId); updateCounter(tabId); renderPreview(tabId);
-  const tab=document.getElementById(tabId);
-  tab.querySelectorAll('input[type="text"], textarea').forEach(input=>{ input.addEventListener('input',()=>saveForm(tabId)); });
-});
+window.onload=function(){
+  ["daily","weekly","monthly"].forEach(id=>{
+    loadForm(id); updateCounter(id); renderPreview(id);
+  });
+  flatpickr("#dailyDate",{ dateFormat:"d-m-Y", locale:"ar"});
+  flatpickr("#weeklyDate",{ dateFormat:"d-m-Y", locale:"ar"});
+  flatpickr("#monthlyDate",{ dateFormat:"d-m-Y", locale:"ar"});
+};
 </script>
+
 </body>
 </html>
